@@ -1,0 +1,24 @@
+# /etc/hiera.yaml
+# This file created by Ansible.
+
+---
+:hierarchy:
+  - "secrets/zone1"
+  - "fqdns/%{::fqdn}"
+  - "zones/zone1"
+  - "hostgroups/%{::hostgroup}"
+  - "common"
+
+:eyaml:
+  :datadir: "/etc/puppet/environments/%{::environment}/hiera"
+  :pkcs7_private_key: /etc/puppet/secure/keys/private.pem
+  :pkcs7_public_key: /etc/puppet/secure/keys/public.pem
+  :extension: 'yaml'
+
+:yaml:
+  :datadir: "/etc/puppet/environments/%{::environment}/hiera"
+
+
+:backends:
+  - eyaml
+  - yaml

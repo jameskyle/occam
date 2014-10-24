@@ -1,0 +1,12 @@
+- name: Deploy r10k Configuration
+  template: src=r10k.yaml
+            dest=/etc/r10k.yaml
+            owner=root
+            group=root
+            mode=0644
+
+- name: Clear Out Old Environments
+  shell: /bin/rm -rf /etc/puppet/environments/* creates=/etc/puppet/environments/testing/.git
+
+- name: Fetch Occam Modules And Environments
+  command: "/usr/local/bin/r10k deploy environment -p"

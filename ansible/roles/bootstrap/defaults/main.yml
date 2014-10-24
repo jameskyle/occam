@@ -1,0 +1,49 @@
+---
+# defaults file for bootstrap
+rpm_url: http://drop.att.io
+eyaml_rpm: rubygem-hiera-eyaml-2.0.6-1.noarch.rpm
+trollop_rpm: rubygem-trollop-2.1.1-1.noarch.rpm
+
+git_repo: "https://github.com/jameskyle/occam-reboot.git"
+domain: zone1.example.com
+puppet_environment: testing
+default_password: drac-ic-vi-un
+
+interfaces:
+  dhcp:
+    eth0:
+      onboot: "yes"
+      netboot: "yes"
+      ipv6: "yes"
+      peerdns: "no"
+      nm_controlled: "no"
+  static:
+    eth1:
+      ip: 192.168.100.10
+      forwarder: 8.8.8.8
+      dns1: 192.168.100.10
+      peerdns: "no"
+      nm_controlled: "no"
+      onboot: "yes"
+      netmask: 255.255.255.0
+      
+management:
+  ip: 192.168.100.10
+  forwarder: 8.8.8.8
+  reverse: 100.168.192
+  netmask: 255.255.255.0
+  gateway: 192.168.100.2
+  interface: eth1
+  dns: 192.168.100.10
+  dhcp_begin: 192.168.100.100
+  dhcp_end: 192.168.100.200
+  network: 192.168.100.0
+
+
+hosts_model: VMware
+
+hosts:
+  - name: ctrl1
+    mac: 00:50:56:26:29:68
+    ip: 192.168.100.11
+    subnet: Management
