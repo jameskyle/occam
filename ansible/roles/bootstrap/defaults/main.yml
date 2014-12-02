@@ -7,7 +7,7 @@ default_password: drac-ic-vi-un
 
 management:
   ip: 192.168.100.10
-  forwarder: 172.16.101.2
+  forwarder: 8.8.8.8
   reverse: 100.168.192
   netmask: 255.255.255.0
   gateway: 192.168.100.2

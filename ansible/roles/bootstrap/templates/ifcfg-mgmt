@@ -5,3 +5,5 @@ IPADDR={{ management.ip }}
 NETMASK={{ management.netmask }}
 DEVICE={{ management.interface }}
 PEERDNS=no
+DNS1=8.8.8.8
+DOMAIN={{ domain }}
