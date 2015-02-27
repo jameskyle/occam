@@ -4,7 +4,7 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-HOST_INTERFACE = ENV['VAGRANT_HOST_INTERFACE'] || "vmnet2"
+HOST_NETWORK = ENV['VAGRANT_HOST_NETWORK'] || "vmnet2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :ops1 do |t|
@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.vmx["ethernet1.connectiontype"] = "custom"
       v.vmx["ethernet1.present"] = "TRUE"
       v.vmx["ethernet1.virtualdev"] = "e1000"
-      v.vmx["ethernet1.vnet"] = HOST_INTERFACE
+      v.vmx["ethernet1.vnet"] = HOST_NETWORK
     end
 
     config.vm.provision :ansible do |ansible|
@@ -56,7 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.vmx["ethernet1.pciSlotNumber"] = "34"
       v.vmx["ethernet1.present"] = "TRUE"
       v.vmx["ethernet1.virtualDev"] = "e1000"
-      v.vmx["ethernet1.vnet"] = HOST_INTERFACE
+      v.vmx["ethernet1.vnet"] = HOST_NETWORK
     end
   end
 end

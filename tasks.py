@@ -33,9 +33,9 @@ VIRTUALBOX_VERSION = LooseVersion('4.3')
 VMWARE_VERSION = LooseVersion('6.0')
 VAGRANT_VERSION = LooseVersion('1.7.2')
 VMWARE_NETWORK_FILE = "/Library/Preferences/VMware Fusion/networking"
-DEMO_SUBNET = "192.168.100.0"
-OPS_FQDN = "ops1.zone1.example.com"
-OPS_IP = "192.168.100.10"
+DEMO_SUBNET =  os.environ.get('DEMO_SUBNET') or "192.168.100.0"
+OPS_FQDN = os.environ.get('OPS_FQDN') or "ops1.zone1.example.com"
+OPS_IP = os.environ.get('OPS_IP') or "192.168.100.10"
 
 @task
 def build_docs():
